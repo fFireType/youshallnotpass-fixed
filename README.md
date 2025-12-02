@@ -37,7 +37,7 @@ For force-installation via Google Admin Console:
 2. Select your organizational unit
 3. Add by extension ID: `efggnkbeomjjanjmghbadggegjemogee`
 4. Set installation policy to **Force Install**
-5. Optionally pin to toolbar for visibility
+5. Optionally pin to toolbar for visibility (AI wrote that, but yeah, probably not(?))
 
 ### Manual Installation (Development)
 
@@ -122,7 +122,7 @@ The extension codebase has been designed to minimize security vulnerabilities:
 
 ### Liability & Warranty Disclaimer
 
-This extension is provided "AS IS" without warranty of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.
+This extension is provided "AS IS" without warranty of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement. (MIT License located in the license file)
 
 **The author assumes no liability for:**
 - Damages arising from use or misuse of this extension
@@ -132,7 +132,7 @@ This extension is provided "AS IS" without warranty of any kind, express or impl
 - Policy violations at individual schools
 
 **Users are responsible for:**
-- Compliance with local policies and regulations
+- Compliance with local, state, federal policies and regulations
 - Testing thoroughly in their environment before deployment
 - Monitoring extension behavior and effectiveness
 - Maintaining appropriate device management policies

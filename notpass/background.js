@@ -1,4 +1,4 @@
-// You Shall Not Pass - Enterprise Hardened v3.0
+// You Shall Not Pass - Enterprise Hardened  v3.0.1-FIXED
 // Written by Jim Tyler, Microsoft MVP
 // Visit my Github for project notes: https://github.com/jimrtyler/youshallnotpass
 // Background Service Worker
@@ -9,12 +9,15 @@
 // ============================================================================
 
 const CONFIG = {
-  MAX_TABS: 15,
+  MAX_TABS: 90,//why even have max tabs-
   TAB_CREATION_WINDOW: 2000,        // 2 seconds
-  MAX_TABS_IN_WINDOW: 5,            // Maximum tabs per window
-  HEARTBEAT_INTERVAL: 5000,         // 5 seconds
-  LOG_RETENTION_DAYS: 30,
-  VIOLATION_COOLDOWN: 10000,        // 10 seconds between similar violations
+  MAX_TABS_IN_WINDOW: 900,            // Maximum tabs per window
+  // uh
+  HEARTBEAT_INTERVAL: 100,         // 5 seconds
+  //keeps crashing so maybe 100ms i s better
+  LOG_RETENTION_DAYS: 999,
+  VIOLATION_COOLDOWN: 0,        // 10 seconds between similar violations
+  // actually lets not!
   
   // Feature flags
   ENABLE_FORENSIC_LOGGING: true,
@@ -67,8 +70,11 @@ class ForensicLogger {
         .slice(-1000);
       
       await chrome.storage.local.set({ violationLogs: trimmedLogs });
+      alert('you really did it this time bucko!\n\n' + logEntry);
+      // lets publically shame them for getting a violation because whats the point otherwize?
       
-      console.warn(`[FORENSIC LOG] ${violationType}:`, logEntry);
+     // console.warn(`[FORENSIC LOG] ${violationType}:`, logEntry);
+      // also remove ts because of big vulnerability
     } catch (error) {
       console.error('Failed to write forensic log:', error);
     }
@@ -107,7 +113,9 @@ class HeartbeatMonitor {
     const activePorts = connectedPorts.size;
     
     // If we have open tabs but no connected ports, something is wrong
-    if (tabs.length > 0 && activePorts === 0) {
+    if (tabs.length > 0 && activePorts < 1) {
+      // dude this literally is 90% of the violations when im testing
+      // why does it crash so much
       await ForensicLogger.log('HEARTBEAT_FAILURE', {
         message: 'All content script connections lost',
         tabCount: tabs.length,
@@ -116,7 +124,9 @@ class HeartbeatMonitor {
     }
     
     // Log heartbeat status
-    console.log(`[HEARTBEAT] Active tabs: ${tabs.length}, Connected ports: ${activePorts}`);
+ //   console.log(`[HEARTBEAT] Active tabs: ${tabs.length}, Connected ports: ${activePorts}`);
+    if (activePorts >= 1) console.log(`[HEARTBEAT] Connected ports: ${activePorts}`);
+    // only get necessary information to prevent console flooding
   }
   
   static registerPort(port) {
@@ -426,7 +436,7 @@ chrome.webNavigation.onCommitted.addListener(async (details) => {
 // ============================================================================
 
 chrome.runtime.onInstalled.addListener(async (details) => {
-  console.log('You Shall Not Pass Enterprise v3.0 installed');
+  console.log('You Shall Not Pass Enterprise  v3.0.1-FIXED installed');
   
   await ForensicLogger.log('EXTENSION_INSTALLED', {
     version: '3.0.0',
@@ -498,7 +508,8 @@ function startKeepAlive() {
       chrome.runtime.getPlatformInfo(() => {
         // Just accessing an API keeps the service worker alive
       });
-    }, 20000); // Every 20 seconds
+      // make sure to check it every 100ms instead of 20s so it doesnt crash within that 20 second interval therefore destroying the entire preocess
+    }, 100); // Every 20 seconds
   }
 }
 
@@ -511,7 +522,8 @@ function stopKeepAlive() {
 
 // Start keepalive
 startKeepAlive();
-
-console.log('You Shall Not Pass Enterprise v3.0 - Background worker initialized');
+// make sure to change the version everywhere it says it!! some things say '3.0.1' while others say '3.0.0' or '3.0' its rlly confusing,
+// also where's v2 and v1...? huh
+console.log('You Shall Not Pass Enterprise v3.0.1-FIXED - Background worker initialized');
 // Written by Jim Tyler, Microsoft MVP
 // Visit my Github for project notes: https://github.com/jimrtyler/youshallnotpass

@@ -1,8 +1,9 @@
-# You Shall Not Pass - Enterprise Hardened v3.0
+# You Shall Not Pass - Enterprise Hardened v3.0.1-FIXED
 
 **A Chrome Extension for K-12 Filter Evasion Prevention**
 
-Written by Jim Tyler
+Improved by TRIXIE & Joe Bartolozzi
+Originally Written by Jim Tyler
 
 ---
 
@@ -377,7 +378,12 @@ Recommended testing scenarios:
 
 ## Version History
 
-### v3.0.1 (Current)
+### v3.0.1-FIXED (Current)
+- Fixed various issues around the extens
+- fixed version statements so u dont get confused
+- wait wait wait wait waiiiit!! linganguli guli guli watchow 
+
+### v3.0.1 (outdated)
 - Removed iframe flood detection (compatibility issues with legitimate sites)
 - Optimized service worker keepalive
 - Enhanced forensic logging with cooldown periods
@@ -406,7 +412,8 @@ Recommended testing scenarios:
 - Additional forensic data collection
 - Dashboard UI for log viewing
 
-**Contact**: coachjimtyler@gmail.com
+**Fork Contact**: twitch.tv/joe_bartolozzi
+**Original Creator's Contact**: coachjimtyler@gmail.com
 
 ---
 
@@ -437,6 +444,7 @@ Built with insights from:
 Special thanks to the educational technology community for sharing intelligence on emerging bypass methods.
 
 ---
-
-**Written by Jim Tyler, Microsoft MVP**  
+**Improved by Trixie the great and powerful**
+Youtube: https://www.youtube.com/@JoeBartolozzi
+**Originally Written by Jim Tyler, Microsoft MVP**  
 GitHub: https://github.com/jimrtyler/youshallnotpass

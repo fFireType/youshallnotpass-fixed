@@ -21,4 +21,4 @@ This extension collects:
 - No third parties have access to this data
 
 ## Contact
-For questions: coachjimtyler@gmail.com
+For questions: refer to original repository i think

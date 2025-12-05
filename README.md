@@ -3,6 +3,7 @@
 **A Chrome Extension for K-12 Filter Evasion Prevention**
 
 Improved by TRIXIE & Joe Bartolozzi
+
 Originally Written by Jim Tyler
 
 ---
@@ -445,6 +446,9 @@ Special thanks to the educational technology community for sharing intelligence 
 
 ---
 **Improved by Trixie the great and powerful**
+
 Youtube: https://www.youtube.com/@JoeBartolozzi
-**Originally Written by Jim Tyler, Microsoft MVP**  
+
+**Originally Written by Jim Tyler, Microsoft MVP** 
+
 GitHub: https://github.com/jimrtyler/youshallnotpass
